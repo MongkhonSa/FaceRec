@@ -48,10 +48,9 @@ def camera_recog():
     while True:
         _,frame = vs.read();
         #u can certainly add a roi here but for the sake of a demo i'll just leave it as simple as this
-        rects, landmarks = face_detect.detect_face(frame,80);#min face size is set to 80x80
+        rects, landmarks = face_detect.detect_face(frame,20);#min face size is set to 80x80
         aligns = []
         positions = []
-
         for (i, rect) in enumerate(rects):
             aligned_face, face_pos = aligner.align(160,frame,landmarks[:,i])
             if len(aligned_face) == 160 and len(aligned_face[0]) == 160:
